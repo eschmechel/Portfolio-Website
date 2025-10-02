@@ -1,0 +1,89 @@
+---
+import '../styles/global.css'
+import { SEO } from "astro-seo";
+import NavBar from '../components/ui/NavBar.astro';
+import Footer from '../components/ui/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+    canonical?: string;
+}
+
+const { 
+    title = "Elliott Schmechel", 
+    description = "Game developer and software engineer specializing in Anti-Cheat systems and game security.",
+    image = "/og-image.jpg",
+    canonical
+} = Astro.props;
+
+const siteUrl = Astro.site || "https://elliottschmechel.com";
+const canonicalURL = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = new URL(image, siteUrl).href;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="sitemap" href="/sitemap-index.xml" type="application/xml" />
+    <SEO
+        title={title}
+        description={description}
+        canonical={canonicalURL}
+        charset="UTF-8"
+        openGraph={{
+            basic: {
+                title: title,
+                type: "website",
+                image: ogImage,
+                url: canonicalURL,
+            },
+            optional: {
+                description: description,
+                siteName: "Elliott Schmechel",
+            },
+            image: {
+                alt: "Elliott Schmechel - Portfolio",
+            }
+        }}
+        twitter={{
+            card: "summary_large_image",
+            site: "@eragondev",
+            creator: "@eragondev",
+            title: title,
+            description: description,
+            image: ogImage,
+            imageAlt: "Elliott Schmechel - Portfolio",
+        }}
+        extend={{
+            link: [
+                { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+            ],
+            meta: [
+                { name: "viewport", content: "width=device-width, initial-scale=1" },
+                { name: "generator", content: Astro.generator },
+
+                // Author and branding
+                { name: "author", content: "Elliott Schmechel" },
+                { name: "theme-color", content: "#0B0D0F" },
+                // Security headers
+                { httpEquiv: "X-Content-Type-Options", content: "nosniff" },
+                { httpEquiv: "X-Frame-Options", content: "SAMEORIGIN" },
+                { httpEquiv: "Referrer-Policy", content: "no-referrer-when-downgrade" },
+                { httpEquiv: "Content-Security-Policy", content: "default-src 'self'; img-src 'self' data: https://ghchart.rshah.org; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'" },
+                { httpEquiv: "Permissions-Policy", content: "geolocation=(), microphone=(), camera=()" },
+                { httpEquiv: "Strict-Transport-Security", content: "max-age=63072000; includeSubDomains; preload" },
+            ],
+        }}
+    />
+    <ClientRouter />
+</head>
+<body class="bg-surface text-text selection:bg-accent-300/30 antialiased min-h-screen">
+    <NavBar transition:animate="none"/>
+    <main>
+        <slot/>
+    </main>
+    <Footer transition:animate="none"/>
+</body>
+</html>

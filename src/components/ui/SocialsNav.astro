@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+
+const socialLinks = [
+    { href: "https://github.com/eschmechel", label: "Github", icon: "line-md:github" },
+    { href: "https://linkedin.com/in/eschmechel", label: "Linkedin", icon: "line-md:linkedin" },
+    { href: "https://twitter.com/eragondev", label: "Twitter", icon: "line-md:twitter" },
+    { href: "https://bsky.app/profile/eschmechel.bsky.social", label: "Bluesky", icon: "line-md:bluesky" }
+];
+
+interface Props {
+    hidden?: string,
+    showLabels: boolean,
+    iconSize?: number, // defaults to 28
+    textSize?: number, // defaults to 16
+
+}
+---
+<nav class="">
+    {socialLinks
+        .filter(social => !(Astro.props.hidden?.toLowerCase() ?? '').split(/\s+/).includes(social.label.toLowerCase()))
+        .map(social => (
+        <a
+            href={social.href}
+            class="btn hover:scale-105 m-2 p-2 rounded-full"
+            aria-label={social.label}
+            data-astro-prefetch
+            target={social.href.startsWith("http") ? "_blank" : undefined}
+            rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+        >
+            <Icon name={social.icon} size={Astro.props.iconSize ?? 28} />
+            {Astro.props.showLabels ? <span class="ml-2" style={{ fontSize: `${Astro.props.textSize ?? 16}px` }}>{social.label}</span> : null}
+        </a>
+    ))}
+</nav>

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Neutrals */
+  --color-bg: #0B0D0F;
+  --color-surface: #121418;
+  --color-muted: #1C2128;
+  --color-border: #2B3138;
+  --color-text: #E6EAF2;
+  --color-text-muted: #A9B1BD;
+  
+  /* Accent - Electric Blue */
+  --color-accent-50: #E7F1FF;
+  --color-accent-300: #6AA6FF;
+  --color-accent-500: #3B82F6;
+  --color-accent-700: #1D4ED8;
+  
+  /* Status */
+  --color-ok: #22C55E;
+  --color-warn: #F59E0B;
+  --color-error: #EF4444;
+
+  /* Font family */
+  --font-family-sans: "Montserrat", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0B0D0F;
+    color: #E6EAF2;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-family-sans);
+    font-weight: 300;
+    font-style: normal;  
+  }
+
+  /* Smooth text rendering */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: #3B82F6;
+    color: #E6EAF2;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-accent-500 text-white hover:bg-accent-700 hover:scale-105 shadow-lg shadow-accent-500/20;
+  }
+
+  .btn-secondary {
+    @apply bg-surface text-text hover:bg-muted border border-border;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-2 border-accent-500 text-accent-500 hover:bg-accent-500 hover:text-white;
+  }
+  .btn-fill-left {
+    @apply bg-gradient-to-r from-accent-500 to-accent-700 bg-[length:0%_100%] bg-left bg-no-repeat transition-[background-size] duration-450 hover:bg-[length:100%_100%] hover:text-white;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-surface rounded-xl p-6 border border-border transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:border-accent-500/50 hover:shadow-lg hover:shadow-accent-500/10 hover:scale-[1.02];
+  }
+
+  /* Text gradient using accent color */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-300 to-accent-700 bg-clip-text text-transparent;
+  }
+}
+
+

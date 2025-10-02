@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Color Test - Portfolio">
+  <div class="p-8 space-y-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl font-bold text-text mb-8">Color Scheme Test Page</h1>
+      
+      <!-- Neutrals Section -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-text mb-6">Neutrals</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="bg-bg p-6 rounded-lg border border-border">
+            <div class="font-mono text-sm text-text-muted mb-2">#0B0D0F</div>
+            <div class="font-semibold text-text">bg (near-black)</div>
+          </div>
+          <div class="bg-surface p-6 rounded-lg border border-border">
+            <div class="font-mono text-sm text-text-muted mb-2">#121418</div>
+            <div class="font-semibold text-text">surface</div>
+          </div>
+          <div class="bg-muted p-6 rounded-lg border border-border">
+            <div class="font-mono text-sm text-text-muted mb-2">#1C2128</div>
+            <div class="font-semibold text-text">muted</div>
+          </div>
+          <div class="bg-bg p-6 rounded-lg border-4 border-border">
+            <div class="font-mono text-sm text-text-muted mb-2">#2B3138</div>
+            <div class="font-semibold text-text">border</div>
+          </div>
+          <div class="bg-surface p-6 rounded-lg border border-border">
+            <div class="font-mono text-sm text-text mb-2">#E6EAF2</div>
+            <div class="font-semibold text-text">text</div>
+          </div>
+          <div class="bg-surface p-6 rounded-lg border border-border">
+            <div class="font-mono text-sm text-text-muted mb-2">#A9B1BD</div>
+            <div class="font-semibold text-text-muted">text-muted</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accent - Electric Blue -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-text mb-6">Accent — Electric Blue</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-accent-50 p-6 rounded-lg border border-border">
+            <div class="font-mono text-sm text-bg mb-2">#E7F1FF</div>
+            <div class="font-semibold text-bg">accent-50</div>
+          </div>
+          <div class="bg-accent-300 p-6 rounded-lg">
+            <div class="font-mono text-sm text-white mb-2">#6AA6FF</div>
+            <div class="font-semibold text-white">accent-300</div>
+          </div>
+          <div class="bg-accent-500 p-6 rounded-lg">
+            <div class="font-mono text-sm text-white mb-2">#3B82F6</div>
+            <div class="font-semibold text-white">accent-500 (primary)</div>
+          </div>
+          <div class="bg-accent-700 p-6 rounded-lg">
+            <div class="font-mono text-sm text-white mb-2">#1D4ED8</div>
+            <div class="font-semibold text-white">accent-700 (deep)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-text mb-6">Buttons</h2>
+        <div class="flex flex-wrap gap-4">
+          <button class="btn btn-primary">Primary Button</button>
+          <button class="btn btn-secondary">Secondary Button</button>
+          <button class="btn btn-outline">Outline Button</button>
+          <button class="btn btn-fill-left">Fill Left Button</button>
+        </div>
+      </section>
+
+      <!-- Cards -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-text mb-6">Cards</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card">
+            <h3 class="text-lg font-bold text-text mb-2">Standard Card</h3>
+            <p class="text-text-muted">This is a basic card with border.</p>
+          </div>
+          <div class="card card-hover">
+            <h3 class="text-lg font-bold text-text mb-2">Hoverable Card</h3>
+            <p class="text-text-muted">Hover me to see the effect!</p>
+          </div>
+          <div class="card border-accent-500 bg-gradient-to-br from-accent-500/10 to-accent-700/5">
+            <h3 class="text-lg font-bold text-accent-300 mb-2">Accent Card</h3>
+            <p class="text-text-muted">Card with accent styling.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gradients -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-text mb-6">Gradients</h2>
+        <div class="space-y-4">
+          <div class="bg-gradient-accent p-8 rounded-lg text-center">
+            <p class="text-white text-lg font-semibold">Accent Gradient Background</p>
+            <p class="text-white/80 text-sm">linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)</p>
+          </div>
+          <div class="bg-surface p-8 rounded-lg text-center">
+            <h3 class="text-4xl font-bold text-gradient mb-2">Gradient Text</h3>
+            <p class="text-text-muted text-sm">Using .text-gradient class</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Status Colors -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-text mb-6">Status Colors</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-ok/10 border border-ok p-6 rounded-lg">
+            <div class="font-mono text-sm text-ok mb-2">#22C55E</div>
+            <div class="font-semibold text-ok">Success / OK</div>
+          </div>
+          <div class="bg-warn/10 border border-warn p-6 rounded-lg">
+            <div class="font-mono text-sm text-warn mb-2">#F59E0B</div>
+            <div class="font-semibold text-warn">Warning</div>
+          </div>
+          <div class="bg-error/10 border border-error p-6 rounded-lg">
+            <div class="font-mono text-sm text-error mb-2">#EF4444</div>
+            <div class="font-semibold text-error">Error</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>
