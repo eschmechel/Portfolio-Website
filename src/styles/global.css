@@ -86,6 +86,12 @@
     background-color: #3B82F6;
     color: #E6EAF2;
   }
+
+  /* Scroll offset for fixed navbar */
+  section[id],
+  div[id] {
+    scroll-margin-top: 5rem; /* Adjust based on your navbar height */
+  }
 }
 
 @layer components {
