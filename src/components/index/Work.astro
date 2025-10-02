@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import GithubChart from "../index/GithubChart.astro"
 
 const projectSections = [
     {
@@ -53,6 +54,14 @@ const projectSections = [
                 status: "Stalled",
                 extra: "Project stalled due to migration to Linux, and lack of UE5 Linux support."
             },
+            {
+                title: "20 Games Challenge",
+                description: "A challenge to recreate 20 games in 1 year using various game engines and frameworks",
+                href: "https://games.eschmechel.dev",
+                tech: ["Unity", "Godot", "Unreal Engine", "C++", "WebGL"],
+                date: "July 2025 - Present",
+                status: "In-progress"
+            }
         ]
     },
     {
@@ -66,6 +75,62 @@ const projectSections = [
                 date: "June 2025 - Present",
                 status: "Live"
             },
+        ]
+    }
+];
+
+const techStack = [
+    {
+        category: "Frontend",
+        technologies: [
+            { name: "TypeScript", icon: "simple-icons:typescript", color: "text-[#3178C6]", url: "https://www.typescriptlang.org/" },
+            { name: "React", icon: "simple-icons:react", color: "text-[#61DAFB]", url: "https://react.dev/" },
+            { name: "Next.js", icon: "simple-icons:nextdotjs", color: "text-text", url: "https://nextjs.org/" },
+            { name: "Tailwind CSS", icon: "simple-icons:tailwindcss", color: "text-[#06B6D4]", url: "https://tailwindcss.com/" },
+            { name: "Astro", icon: "simple-icons:astro", color: "text-[#FF5D01]", url: "https://astro.build/" },
+            { name: "HTML5", icon: "simple-icons:html5", color: "text-[#E34F26]", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+            { name: "CSS3", icon: "simple-icons:css3", color: "text-[#1572B6]", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        ]
+    },
+    {
+        category: "Backend",
+        technologies: [
+            { name: "Node.js", icon: "simple-icons:nodedotjs", color: "text-[#339933]", url: "https://nodejs.org/" },
+            { name: "Python", icon: "simple-icons:python", color: "text-[#3776AB]", url: "https://www.python.org/" },
+            { name: "Express", icon: "simple-icons:express", color: "text-text", url: "https://expressjs.com/" },
+            { name: "MongoDB", icon: "simple-icons:mongodb", color: "text-[#47A248]", url: "https://www.mongodb.com/" },
+            { name: "Redis", icon: "simple-icons:redis", color: "text-[#DC382D]", url: "https://redis.io/" },
+        ]
+    },
+    {
+        category: "Game Dev",
+        technologies: [
+            { name: "C++", icon: "simple-icons:cplusplus", color: "text-[#00599C]", url: "https://isocpp.org/" },
+            { name: "C#", icon: "simple-icons:csharp", color: "text-[#239120]", url: "https://learn.microsoft.com/en-us/dotnet/csharp/" },
+            { name: "Unreal Engine", icon: "simple-icons:unrealengine", color: "text-text", url: "https://www.unrealengine.com/" },
+            { name: "Unity", icon: "simple-icons:unity", color: "text-text", url: "https://unity.com/" },
+            { name: "Steamworks SDK", icon: "simple-icons:steam", color: "text-[#00ADEE]", url: "https://partner.steamgames.com/" },
+        ]
+    },
+    {
+        category: "DevOps",
+        technologies: [
+            { name: "Docker", icon: "simple-icons:docker", color: "text-[#2496ED]", url: "https://www.docker.com/" },
+            { name: "Git", icon: "simple-icons:git", color: "text-[#F05032]", url: "https://git-scm.com/" },
+            { name: "Linux", icon: "simple-icons:linux", color: "text-[#FCC624]", url: "https://www.kernel.org/" },
+            { name: "Nginx", icon: "simple-icons:nginx", color: "text-[#009639]", url: "https://nginx.org/" },
+            { name: "Cloudflare", icon: "simple-icons:cloudflare", color: "text-[#F38020]", url: "https://www.cloudflare.com/" },
+            { name: "Proxmox", icon: "simple-icons:proxmox", color: "text-[#E57000]", url: "https://www.proxmox.com/" },
+        ]
+    },
+    {
+        category: "Cybersecurity",
+        technologies: [
+            { name: "Burp Suite", icon: "simple-icons:burpsuite", color: "text-[#FF5722]", url: "https://portswigger.net/burp" },
+            { name: "x64dbg", icon: "carbon:debug", color: "text-[#FF6A00]", url: "https://x64dbg.com/" },
+            { name: "Wireshark", icon: "simple-icons:wireshark", color: "text-[#007ACC]", url: "https://www.wireshark.org/" },
+            { name: "Wireguard", icon: "simple-icons:wireguard", color: "text-[#8BC9FF]", url: "https://www.wireguard.com/" },
+            { name: "Bash", icon: "simple-icons:gnubash", color: "text-[#4EAA25]", url: "https://www.gnu.org/software/bash/" },
         ]
     }
 ];
@@ -84,7 +149,7 @@ const projectSections = [
 
     <!-- Unified Project Sections Loop -->
     {projectSections.map((section, sectionIndex) => (
-        <div class={sectionIndex < projectSections.length - 1 ? "mb-12" : ""}>
+        <div class="mb-12">
             <h3 class="text-sm font-bold text-accent-500 uppercase tracking-wider mb-6">
                 {section.title}
             </h3>
@@ -128,7 +193,7 @@ const projectSections = [
                                         `text-xs px-2 py-1 rounded font-medium ${
                                             project.status === 'Live' || project.status === 'Completed'
                                                 ? 'bg-ok/20 text-ok'
-                                                : project.status === 'In-progress' || project.status === 'Stalled'
+                                                : project.status === 'In-progress'
                                                 ? 'bg-warn/20 text-warn'
                                                 : 'bg-error/20 text-error'
                                         }`
@@ -138,9 +203,9 @@ const projectSections = [
                                 </div>
                             </a>
                         ) : (
-                            <div class="block border-l-2 border-border hover:border-accent-500 pl-6 py-2 transition-all duration-300">
+                            <div class="block border-l-2 border-border pl-6 py-2">
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
-                                    <h4 class="text-xl font-bold text-text group-hover:text-accent-500 transition-colors">
+                                    <h4 class="text-xl font-bold text-text">
                                         {project.title}
                                     </h4>
                                     <div class="flex flex-col items-end">
@@ -167,7 +232,7 @@ const projectSections = [
                                         `text-xs px-2 py-1 rounded font-medium ${
                                             project.status === 'Live' || project.status === 'Completed'
                                                 ? 'bg-ok/20 text-ok'
-                                                : project.status === 'In-progress' || project.status === 'Stalled'
+                                                : project.status === 'In-progress'
                                                 ? 'bg-warn/20 text-warn'
                                                 : 'bg-error/20 text-error'
                                         }`
@@ -182,4 +247,55 @@ const projectSections = [
             </div>
         </div>
     ))}
+
+    <!-- GitHub Chart -->
+    <div class="mb-4">
+        <h3 class="text-sm font-bold text-accent-500 uppercase tracking-wider mb-6">
+            Github Contribution Chart
+        </h3>
+        <GithubChart />
+    </div>
+</section>
+
+<!-- Tech Stack Section -->
+<section id="tech-stack" class="max-w-5xl mx-auto px-4 py-16 border-t border-border">
+    <!-- Section Header -->
+    <div class="mb-16">
+        <h2 class="text-4xl font-black text-text mb-3">
+            Tech <span class="text-gradient">Stack</span>
+        </h2>
+        <p class="text-text-muted text-lg">
+            Technologies and tools I work with
+        </p>
+    </div>
+
+    <!-- Tech Categories in 5-Column Grid -->
+    <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
+        {techStack.map((category) => (
+            <div class="flex flex-col">
+                <h3 class="text-lg font-bold text-accent-500 mb-4">
+                    {category.category}
+                </h3>
+                <div class="space-y-3">
+                    {category.technologies.map((tech) => (
+                        <a 
+                            href={tech.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex items-center gap-3 group"
+                        >
+                            <Icon 
+                                name={tech.icon} 
+                                class={`w-6 h-6 ${tech.color} group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
+                                aria-hidden="true" 
+                            />
+                            <span class="text-text-muted text-sm font-medium group-hover:text-text transition-colors">
+                                {tech.name}
+                            </span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        ))}
+    </div>
 </section>

@@ -34,13 +34,13 @@ const ogImage = new URL(image, siteUrl).href;
         charset="UTF-8"
         openGraph={{
             basic: {
-                title: title,
+                title: `${title}`,
                 type: "website",
                 image: ogImage,
                 url: canonicalURL,
             },
             optional: {
-                description: description,
+                description: `${description}`,
                 siteName: "Elliott Schmechel",
             },
             image: {
@@ -59,6 +59,10 @@ const ogImage = new URL(image, siteUrl).href;
         extend={{
             link: [
                 { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+                { rel: "preconnect", href: "https://fonts.googleapis.com" },
+                { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "true" },
+                { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" }
+
             ],
             meta: [
                 { name: "viewport", content: "width=device-width, initial-scale=1" },
