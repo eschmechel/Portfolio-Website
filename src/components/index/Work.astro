@@ -7,29 +7,22 @@ const projectSections = [
         title: "Featured Deployments",
         projects: [
             {
-                title: "Portfolio Website",
-                description: "This Site: My personal portfolio built with Astro and Tailwind CSS",
-                href: "https://github.com/eschmechel/portfolio-website",
-                tech: ["Astro", "Tailwind", "TypeScript"],
-                date: "September 2025",
-                status: "Live"
+                title: "Langara French Club Website",
+                description: "Official website for the Langara French Club, a student-run organization at Langara College, featuring event management and membership sign-ups.",
+                href: "https://langarafr.com",
+                status: "Live",
             },
             {
                 title: "Student Software Association",
-                description: "Student-run club focused on building free, open-source solutions and applications for the Vancouver community",
+                description: "Student-run club focused on building free, open-source solutions and applications for the Vancouver community, integrated with Github for OAuth and project management, enabling students to securely collaborate on projects.",
                 href: "https://studentsoftware.org",
-                tech: ["Next.js", "React", "Tailwind", "Cloudflare Workers"],
-                date: "May 2025 - Present",
                 status: "In-progress"
             },
             {
                 title: "Langara Scheduler",
-                description: "Course scheduling tool for Langara College students",
+                description: "Course scheduling tool for Langara College students, made as a replacement for the abandoned LangaraCS Club's planner. Showcasing data from the Langara College website, with transfer data and Rate-My-Professor integration.",
                 href: "https://github.com/LMSAIH/LangaraScraper",
-                tech: ["Typescript", "Node.js", "Express", "MongoDB"],
-                date: "May 2025- August 2025",
                 status: "Archived",
-                extra: "Project archived due to Langara migrating to Workday.",
             },
 
         ]
@@ -39,27 +32,20 @@ const projectSections = [
         projects: [
             {
                 title: "Anti-Cheat Development",
-                description: "Testing self-developed cheats against singleplayer games to understand anti-cheat evasion techniques",
+                description: "Studying and developing cheats and anti-cheat solutions to gain better understanding of game-hacking techniques, and circumventions against cheat software. Solely leveraged against single-player games to forgo ethical concerns.",
                 href: "",
-                tech: ["C++", "x64 Assembly", "Reverse Engineering", "Network Security"],
-                date: "November 2024 - Present",
                 status: "In-progress"
             },
             {
                 title: "Unreal Engine Custom Matchmaking Plugin",
                 description: "Custom matchmaking plugin for UE5 utilizing Steam Peer-to-Peer networking",
                 href: "",
-                tech: ["Unreal Engine", "C++", "Blueprints", "Steamworks SDK"],
-                date: "August 2025",
                 status: "Stalled",
-                extra: "Project stalled due to migration to Linux, and lack of UE5 Linux support."
             },
             {
                 title: "20 Games Challenge",
                 description: "A challenge to recreate 20 games in 1 year using various game engines and frameworks",
                 href: "https://games.eschmechel.dev",
-                tech: ["Unity", "Godot", "Unreal Engine", "C++", "WebGL"],
-                date: "July 2025 - Present",
                 status: "In-progress"
             }
         ]
@@ -71,8 +57,6 @@ const projectSections = [
                 title: "Home Lab",
                 description: "Self-hosted Proxmox cluster across multiple nodes using RAID-10 storage for resilient VM and container hosting",
                 href: "",
-                tech: ["Proxmox", "Linux", "Docker", "Nginx", "Wireguard"],
-                date: "June 2025 - Present",
                 status: "Live"
             },
         ]
@@ -136,11 +120,11 @@ const techStack = [
 ];
 ---
 
-<section id="work" class="max-w-5xl mx-auto px-4 py-16">
+<section id="work" class="max-w-5xl mx-auto px-4 pb-8 ">
     <!-- Section Header -->
     <div class="mb-16">
-        <h2 class="text-4xl font-black text-text mb-3">
-            Selected <span class="text-gradient">Work</span>
+        <h2 class="text-4xl font-semibold text-text mb-3">
+            Selected <span class="font-black">Work</span>
         </h2>
         <p class="text-text-muted text-lg">
             Web applications in production and game development projects
@@ -169,28 +153,8 @@ const techStack = [
                                         {project.title}
                                         <Icon name={`line-md:${project.href.includes("github") ? "github" : "external-link"}`} class="inline-block w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
                                     </h4>
-                                    <div class="flex flex-col items-end">
-                                        <span class="text-sm text-text-muted">{project.date}</span>
-                                        {project.extra && (
-                                            <span class="text-xs text-text-muted italic mt-1">
-                                                {project.extra}
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                                
-                                <p class="text-text-muted mb-3">
-                                    {project.description}
-                                </p>
-                                
-                                <div class="flex flex-wrap gap-2">
-                                    {project.tech.map((tech) => (
-                                        <span class="text-xs text-accent-300 bg-muted px-2 py-1 rounded">
-                                            {tech}
-                                        </span>
-                                    ))}
                                     <span class={
-                                        `text-xs px-2 py-1 rounded font-medium ${
+                                        `text-xs px-2 py-1 rounded font-medium whitespace-nowrap ${
                                             project.status === 'Live' || project.status === 'Completed'
                                                 ? 'bg-ok/20 text-ok'
                                                 : project.status === 'In-progress'
@@ -201,6 +165,10 @@ const techStack = [
                                         ● {project.status}
                                     </span>
                                 </div>
+                                
+                                <p class="text-text-muted mb-3 max-w-prose">
+                                    {project.description}
+                                </p>
                             </a>
                         ) : (
                             <div class="block border-l-2 border-border pl-6 py-2">
@@ -208,28 +176,8 @@ const techStack = [
                                     <h4 class="text-xl font-bold text-text">
                                         {project.title}
                                     </h4>
-                                    <div class="flex flex-col items-end">
-                                        <span class="text-sm text-text-muted">{project.date}</span>
-                                        {project.extra && (
-                                            <span class="text-xs text-text-muted italic mt-1">
-                                                {project.extra}
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                                
-                                <p class="text-text-muted mb-3">
-                                    {project.description}
-                                </p>
-                                
-                                <div class="flex flex-wrap gap-2">
-                                    {project.tech.map((tech) => (
-                                        <span class="text-xs text-accent-300 bg-muted px-2 py-1 rounded">
-                                            {tech}
-                                        </span>
-                                    ))}
                                     <span class={
-                                        `text-xs px-2 py-1 rounded font-medium ${
+                                        `text-xs px-2 py-1 rounded font-medium whitespace-nowrap ${
                                             project.status === 'Live' || project.status === 'Completed'
                                                 ? 'bg-ok/20 text-ok'
                                                 : project.status === 'In-progress'
@@ -240,6 +188,10 @@ const techStack = [
                                         ● {project.status}
                                     </span>
                                 </div>
+                                
+                                <p class="text-text-muted mb-3 max-w-prose">
+                                    {project.description}
+                                </p>
                             </div>
                         )}
                     </article>
@@ -258,15 +210,12 @@ const techStack = [
 </section>
 
 <!-- Tech Stack Section -->
-<section id="tech-stack" class="max-w-5xl mx-auto px-4 py-16 border-t border-border">
+<section id="tech-stack" class="max-w-5xl mx-auto  py-8 border-t border-border">
     <!-- Section Header -->
-    <div class="mb-16">
-        <h2 class="text-4xl font-black text-text mb-3">
-            Tech <span class="text-gradient">Stack</span>
+    <div class="mb-8">
+        <h2 class="text-4xl font-semibold text-text mb-3">
+            Tech <span class="font-black">Stack</span>
         </h2>
-        <p class="text-text-muted text-lg">
-            Technologies and tools I work with
-        </p>
     </div>
 
     <!-- Tech Categories in 5-Column Grid -->
