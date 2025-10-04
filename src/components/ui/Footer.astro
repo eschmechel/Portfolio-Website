@@ -13,7 +13,7 @@ const socialLinks = [
 const quickLinks = [
     { name: "Home", url: "/#home" },
     { name: "Work", url: "/#work" },
-    { name: "Experiences", url: "/experiences" },
+    { name: "Experiences", url: "/#experiences" },
     { name: "About", url: "/about" },
 ];
 ---
@@ -21,7 +21,7 @@ const quickLinks = [
 <footer class="bg-surface border-t border-border mt-auto" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 py-12">
         <!-- Main footer content -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-5xl w-full lg:w-5xl mx-auto">
+        <div class="grid grid-cols-3 gap-8 md:gap-12 max-w-5xl w-full lg:w-5xl mx-auto">
             <!-- Socials Column -->
             <nav aria-label="Social media links">
                 <h3 class="text-text font-bold text-xl mb-4">Socials</h3>
@@ -61,7 +61,7 @@ const quickLinks = [
             </nav>
 
             <!-- Contact Column -->
-            <div>
+            <div class="">
                 <h3 class="text-text font-bold text-xl mb-4">Get In Touch</h3>
                 <div class="flex flex-col gap-3">
                     <a 
@@ -70,7 +70,8 @@ const quickLinks = [
                         aria-label="Send me an email"
                     >
                         <Icon name="line-md:email" size={24} aria-hidden="true" />
-                        <span>elliottschmechel@gmail.com</span>
+                        <span class="max-sm:hidden">elliottschmechel@gmail.com</span>
+                        <span class="sm:hidden">Email</span>
                     </a>
                     <a 
                         href="/resume.pdf"
@@ -78,7 +79,8 @@ const quickLinks = [
                         aria-label="Download my resume"
                     >
                         <Icon name="line-md:document" size={24} aria-hidden="true" />
-                        <span>Download Resume</span>
+                        <span class="max-sm:hidden">Download Resume</span>
+                        <span class="sm:hidden">Resume</span>
                     </a>
                 </div>
             </div>

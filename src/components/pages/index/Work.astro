@@ -63,6 +63,71 @@ const projectSections = [
     }
 ];
 
+type Experience = {
+    type: "Education" | "Work Experience" | "Volunteering Experience" | "Certifications & Achievements";
+    icon?: string;
+    title: string;
+    institution?: string;
+    company?: string;
+    location: string;
+    date: string;
+    achievements?: string[];
+    description?: string;
+};
+const experiencesSections: Experience[] = [
+
+    {
+        type: "Education",
+        icon: "langara-college",
+        title:"Associate of Science in Computer Science",
+        institution: "Langara College",
+        location: "Vancouver, BC",
+        date: "September 2024 - Present",
+        achievements: [],
+        description:"",
+    },
+    {
+        icon: "data-annotation",
+        type: "Work Experience",
+        title:"AI Red Teamer",
+        company: "Data Annotation",
+        location: "Remote",
+        date: "November 2024 - Present",
+        achievements: [
+            "Conducted red teaming exercises to identify vulnerabilities in AI models",
+            "Provided detailed reports and recommendations to improve AI security"
+        ],
+        description:"Gained experience in AI security and ethical hacking.",
+    },
+    {
+        icon: "french-club",
+        type: "Volunteering Experience",
+        title:"IT Associate ",
+        company: "Langara French Club",
+        location: "Vancouver, BC",
+        date: "June 2025 - Present",
+        achievements: [
+            "Developed and maintained the club's website using React and Tailwind CSS",
+            "Managed event registrations and member sign-ups through the website",
+            "Provided technical support for club events and activities"
+        ],
+        description:"",
+    },
+    {
+        icon: "riot-games",
+        type: "Volunteering Experience",
+        title:"Game Tester",
+        company: "Riot Games",
+        location: "Remote",
+        date: "Janurary 2025",
+        achievements: [
+            "Tested new game features and provided feedback to the development team",
+            "Identified and reported bugs and issues in the game"
+        ],
+        description:"",
+    },
+];
+
 const techStack = [
     {
         category: "Frontend",
@@ -146,7 +211,7 @@ const techStack = [
                                 href={project.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="block border-l-2 border-border hover:border-accent-500 pl-6 py-2 transition-all duration-300"
+                                class="block border-l-2 border-border hover:border-accent-500 rounded-lg pl-6 py-2 transition-all duration-300"
                             >
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
                                     <h4 class="text-xl font-bold text-text group-hover:text-accent-500 transition-colors">
@@ -171,9 +236,9 @@ const techStack = [
                                 </p>
                             </a>
                         ) : (
-                            <div class="block border-l-2 border-border pl-6 py-2">
+                            <div class="block border-l-2 border-border rounded-lg hover:border-accent-500 hover:cursor-default pl-6 py-2" >
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
-                                    <h4 class="text-xl font-bold text-text">
+                                    <h4 class="text-xl font-bold text-text group-hover:text-accent-500">
                                         {project.title}
                                     </h4>
                                     <span class={
@@ -209,8 +274,124 @@ const techStack = [
     </div>
 </section>
 
+<section id="experiences" class="max-w-5xl mx-auto py-8 px-4 border-t border-border">
+    <!-- Section Header -->
+    <div class="mb-16">
+        <h2 class="text-4xl font-semibold text-text mb-3">
+            Experiences
+        </h2>
+        <p class="text-text-muted text-lg">
+            Academic background, work experience, and qualifications
+        </p>
+    </div>
+    
+    <!-- Group experiences by type -->
+    {["Education", "Work Experience", "Volunteering Experience", "Certifications"].map((type) => {
+        const typeExperiences = experiencesSections.filter(exp => exp.type === type);
+        if (typeExperiences.length === 0) return null;
+        return (
+            <div class="mb-12">
+                <h3 class="text-sm font-bold text-accent-500 uppercase tracking-wider mb-6 flex items-center gap-2">
+                    {type}
+                </h3>
+                
+                <div class="space-y-8">
+                    {typeExperiences.map((experience, index) => {
+                        const hasExpandableContent = (experience.description || (experience.achievements && experience.achievements.length > 0));
+                        return (
+                            <article class="group border-l-2 border-border hover:border-accent-500 rounded-lg transition-all duration-300">
+                                <button
+                                    data-experience-toggle={`${type}-${index}`}
+                                    class={`w-full text-left pl-6 py-2 ${hasExpandableContent ? 'cursor-pointer' : 'cursor-default'}`}
+                                    aria-expanded="false"
+                                    disabled={!hasExpandableContent}
+                                >
+                                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
+                                        <h4 class="text-xl font-bold text-text group-hover:text-accent-500 transition-colors flex items-center gap-2">
+                                            {experience.icon && (
+                                                <Icon name={experience.icon} class="size-12 rounded-full text-accent-500 flex-shrink-0" aria-hidden="true" />
+                                            )}
+                                            <span>{experience.title}</span>
+                                        </h4>
+                                        <div class="flex flex-col items-end gap-2">
+                                            <span class="text-xs text-text-muted whitespace-nowrap flex items-center gap-1">
+                                                {experience.date}
+                                            </span>
+                                            {hasExpandableContent && (
+                                                <div class="text-xs text-accent-500 font-medium flex items-center gap-1">
+                                                    <Icon id="chevron" name="line-md:chevron-right" class="w-4 h-4 transition-transform duration-300" aria-hidden="true" />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="text-text-muted text-sm mb-2 flex items-center gap-1.5">
+                                        {experience.company || experience.institution} • {experience.location}
+                                    </p>
+                                </button>
+                                
+                                <div 
+                                    data-experience-content={`${type}-${index}`}
+                                    class="overflow-hidden max-h-0 transition-all duration-300 pl-6"
+                                >
+                                    {experience.description && (
+                                        <p class="text-text-muted mb-3 max-w-prose mt-3">
+                                            {experience.description}
+                                        </p>
+                                    )}
+                                    
+                                    {experience.achievements && experience.achievements.length > 0 && (
+                                        <ul class="list-disc list-inside space-y-1 ml-2 mt-3 pb-2">
+                                            {experience.achievements.map((achievement) => (
+                                                <li class="text-text-muted text-sm">
+                                                    {achievement}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                            </article>
+                        );
+                    })}
+                </div>
+            </div>
+        );
+    })}
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleButtons = document.querySelectorAll('[data-experience-toggle]');
+        
+        toggleButtons.forEach(button => {
+            // Skip if button is disabled (no details to show)
+            if (button.hasAttribute('disabled')) return;
+            
+            button.addEventListener('click', () => {
+                const contentId = button.getAttribute('data-experience-toggle');
+                const content = document.querySelector(`[data-experience-content="${contentId}"]`) as HTMLElement;
+                const icon = button.querySelector('#chevron');
+                
+                if (content && icon) {
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    
+                    if (isExpanded) {
+                        content.style.maxHeight = '0';
+                        icon.style.transform = 'rotate(0deg)';
+                        button.setAttribute('aria-expanded', 'false');
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(90deg)';
+                        button.setAttribute('aria-expanded', 'true');
+                    }
+                }
+            });
+        });
+    });
+</script>
+
 <!-- Tech Stack Section -->
-<section id="tech-stack" class="max-w-5xl mx-auto  py-8 border-t border-border">
+<section id="tech-stack" class="max-w-5xl mx-auto px-4 py-8 border-t border-border">
     <!-- Section Header -->
     <div class="mb-8">
         <h2 class="text-4xl font-semibold text-text mb-3">
@@ -219,7 +400,7 @@ const techStack = [
     </div>
 
     <!-- Tech Categories in 5-Column Grid -->
-    <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
+    <div class="grid grid-cols-3 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
         {techStack.map((category) => (
             <div class="flex flex-col">
                 <h3 class="text-lg font-bold text-accent-500 mb-4">
