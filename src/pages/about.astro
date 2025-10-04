@@ -1,13 +1,164 @@
 ---
 import Base from '../layouts/Base.astro';
-
+import { Icon } from "astro-icon/components";
 ---
 <Base>
-     <section id="about" class="min-h-screen py-12 px-4">
+    <section id="about" class="min-h-screen py-12 px-4">
         <div class="max-w-4xl mx-auto text-center mb-12">
-            <h1 class="text-4xl  mb-6 font-display font-semibold tracking-wide">
+            <h1 class="text-4xl mb-6 font-display font-semibold tracking-wide">
                 About Me
             </h1>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <!-- Sidebar -->
+            <div class="space-y-6 md:h-full md:order-2">
+                <!-- Profile Info Card -->
+                <div class="bg-slate-800/50 rounded-lg p-6 border border-slate-700 flex flex-col h-full">
+                    <h3 class="text-xl font-semibold mb-6 text-accent-500">Profile Info</h3>
+                    
+                    <!-- Profile Picture -->
+                    <div class="w-full aspect-square rounded-2xl overflow-hidden bg-slate-700/50 mb-6">
+                        <img src="mydog.jpg" alt="Elliott Schmechel" class="w-full h-full object-cover" />
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="space-y-3 flex-grow">
+                        <!-- Education -->
+                        <div class="flex items-start gap-3 text-accent-500">
+                            <Icon name="line-md:briefcase" class="w-5 h-5 mt-0.5 flex-shrink-0" />
+                            <span class="text-sm">ASc CS at Langara College</span>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="flex items-start gap-3 text-accent-500">
+                            <Icon name="line-md:map-marker" class="w-5 h-5 mt-0.5 flex-shrink-0" />
+                            <span class="text-sm">Based in Vancouver, BC</span>
+                        </div>
+
+                        <!-- Email -->
+                        <a href="mailto:elliottschmechel@gmail.com" 
+                           class="flex items-start gap-3 text-accent-500 hover:text-text transition-colors group">
+                            <Icon name="line-md:email" class="w-5 h-5 mt-0.5 flex-shrink-0" />
+                            <span class="text-sm underline decoration-accent-500 group-hover:decoration-accent-500/70">elliottschmechel@gmail.com</span>
+                        </a>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/eschmechel" 
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-start gap-3 text-accent-500 hover:text-text transition-colors group">
+                            <Icon name="line-md:github" class="w-5 h-5 mt-0.5 flex-shrink-0" />
+                            <span class="text-sm underline decoration-accent-500 group-hover:decoration-accent-500">Github profile</span>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://linkedin.com/in/elliott-schmechel" 
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-start gap-3 text-accent-500 hover:text-text transition-colors group">
+                            <Icon name="line-md:linkedin" class="w-5 h-5 mt-0.5 flex-shrink-0" />
+                            <span class="text-sm underline decoration-accent-500 group-hover:decoration-accent-500">LinkedIn profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="md:col-span-2 space-y-8 md:order-1">
+                
+                <!-- My Journey Section -->
+                <div class="bg-slate-800/50 rounded-lg p-8 border border-slate-700">
+                    <h2 class="text-3xl font-display font-semibold mb-6">My Journey</h2>
+                    <div class="space-y-4 text-slate-300 leading-relaxed">
+                        <p>
+                            I'm Elliott Schmechel, a 19-year-old software engineer based in Vancouver, BC. 
+                            I started coding at 13 making Scratch games, ever since I've had the drive to create.
+                        </p>
+                        <p>
+                            Currently, I'm studying Computer Science at Langara College. Between student life, 
+                            and juggling customer-experience part-time jobs, I try to find time for personal 
+                            projects and skill development.
+                        </p>
+                        <p>
+                            I specialize in game development using Godot and Unreal Engine, with strong skills 
+                            in C++ and C#. I'm also passionate about infrastructure and DevSecOps, maintaining 
+                            a personal homelab exploring cloud technologies and self-hosting.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- What I Do Section -->
+                <div>
+                    <h2 class="text-3xl font-display font-semibold mb-6">What I Do</h2>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <!-- Games -->
+                        <div class="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="bg-purple-500/20 p-2 rounded-lg">
+                                    <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold">Games</h3>
+                            </div>
+                            <p class="text-slate-300">
+                                Creating engaging games with Godot and Unreal Engine, focusing on gameplay 
+                                mechanics and networking.
+                            </p>
+                        </div>
+
+                        <!-- DevOps -->
+                        <div class="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="bg-pink-500/20 p-2 rounded-lg">
+                                    <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold">DevOps</h3>
+                            </div>
+                            <p class="text-slate-300">
+                                Building and maintaining homelab environments with container orchestration 
+                                and cloud deployments.
+                            </p>
+                        </div>
+
+                        <!-- AI & ML -->
+                        <div class="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="bg-green-500/20 p-2 rounded-lg">
+                                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold">AI & ML</h3>
+                            </div>
+                            <p class="text-slate-300">
+                                Working as an AI Red Teamer, testing and improving AI systems with quality 
+                                assurance experience.
+                            </p>
+                        </div>
+
+                        <!-- Web Dev -->
+                        <div class="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="bg-blue-500/20 p-2 rounded-lg">
+                                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold">Web Dev</h3>
+                            </div>
+                            <p class="text-slate-300">
+                                Building modern web applications using frameworks like Astro, with a focus 
+                                on performance and accessibility.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </Base>
