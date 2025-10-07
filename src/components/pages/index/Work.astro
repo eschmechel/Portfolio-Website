@@ -132,6 +132,18 @@ const experiencesSections: Experience[] = [
         ],
         description:"",
     },
+    {
+        icon: "stormhacks-2025",
+        type: "Certifications & Achievements",
+        title:"StormHacks 2025 - 1st Place",
+        location: "Vancouver, BC",
+        date: "October 2025",
+        achievements: [
+            "Won 1st place at StormHacks 2025 for developing an innovative web application",
+            "Won Best Design track for outstanding UI/UX design",
+            "Got 2nd place at the United Nations Sustainable Development Goals Enactus Challenge for creating a solution addressing global challenges"
+        ],
+    },
 ];
 
 const techStack = [
@@ -152,6 +164,7 @@ const techStack = [
         technologies: [
             { name: "Node.js", icon: "simple-icons:nodedotjs", color: "text-[#339933]", url: "https://nodejs.org/" },
             { name: "Python", icon: "simple-icons:python", color: "text-[#3776AB]", url: "https://www.python.org/" },
+            { name: "FastAPI", icon: "simple-icons:fastapi", color: "text-[#009688]", url: "https://fastapi.tiangolo.com/" },
             { name: "Express", icon: "simple-icons:express", color: "text-text", url: "https://expressjs.com/" },
             { name: "MongoDB", icon: "simple-icons:mongodb", color: "text-[#47A248]", url: "https://www.mongodb.com/" },
             { name: "Redis", icon: "simple-icons:redis", color: "text-[#DC382D]", url: "https://redis.io/" },
@@ -173,7 +186,7 @@ const techStack = [
             { name: "Docker", icon: "simple-icons:docker", color: "text-[#2496ED]", url: "https://www.docker.com/" },
             { name: "Git", icon: "simple-icons:git", color: "text-[#F05032]", url: "https://git-scm.com/" },
             { name: "Linux", icon: "simple-icons:linux", color: "text-[#FCC624]", url: "https://www.kernel.org/" },
-            { name: "Nginx", icon: "simple-icons:nginx", color: "text-[#009639]", url: "https://nginx.org/" },
+            { name: "DigitalOcean", icon: "simple-icons:digitalocean", color: "text-[#0080FF]", url: "https://www.digitalocean.com/" },
             { name: "Cloudflare", icon: "simple-icons:cloudflare", color: "text-[#F38020]", url: "https://www.cloudflare.com/" },
             { name: "Proxmox", icon: "simple-icons:proxmox", color: "text-[#E57000]", url: "https://www.proxmox.com/" },
         ]
@@ -292,7 +305,7 @@ const techStack = [
     </div>
     
     <!-- Group experiences by type -->
-    {["Education", "Work Experience", "Volunteering Experience", "Certifications"].map((type) => {
+    {["Education", "Work Experience", "Volunteering Experience", "Certifications & Achievements"].map((type) => {
         const typeExperiences = experiencesSections.filter(exp => exp.type === type);
         if (typeExperiences.length === 0) return null;
         return (
@@ -376,7 +389,7 @@ const techStack = [
             button.addEventListener('click', () => {
                 const contentId = button.getAttribute('data-experience-toggle');
                 const content = document.querySelector(`[data-experience-content="${contentId}"]`) as HTMLElement;
-                const icon = button.querySelector('#chevron');
+                const icon = button.querySelector('#chevron') as HTMLElement;
                 
                 if (content && icon) {
                     const isExpanded = button.getAttribute('aria-expanded') === 'true';
